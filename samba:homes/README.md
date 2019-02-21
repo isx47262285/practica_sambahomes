@@ -39,7 +39,7 @@ chown -R pau.users /tmp/home/pau
 
 echo -e "pere\npere" | smbpasswd -a pere
 echo -e "pau\npau" | smbpasswd -a pau
-``
+```
 
 * configuracion de los ficheros nsld.conf y nsswitch.conf para tener conectividad  con el servidor ldap y hacer getent passwd para comprovarlo.
 
