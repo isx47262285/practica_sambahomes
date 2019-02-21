@@ -32,6 +32,42 @@ docker run --rm --name host -h host --privileged --network sambanet -it robert72
 docker run --rm --name samba -h samba --network sambanet -it robert72004/samba:18homes
 ```
 
+### comprovacion:
+
+desde el host, nos vamos loguear:
+```
+[local01@host docker]$ su - pere
+Password: 
+Creating directory '/tmp/home/pere'.
+reenter password for pam_mount:
+[pere@host ~]$ ll 
+total 0
+drwxr-xr-x. 2 pere users 0 Feb 21 12:32 pere
+[pere@host ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          89G   19G   66G  23% /
+tmpfs           1.9G     0  1.9G   0% /dev
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda5        89G   19G   66G  23% /etc/hosts
+shm              64M     0   64M   0% /dev/shm
+//samba/pere     89G   24G   66G  27% /tmp/home/pere/pere
+```
+
+#### otra comprovacion, desde fuera.
+
+```
+mount -t cifs -o "user=pere" //172.99.0.4/pere /mnt
+```
+> atencion! warning! yeeeee!!:
+en este caso hemos utilizado la direccion ip 172.99.0.4 correspondiente al samba 
+pero esto puede variar segun el orden de puesta en marcha de los containers
+
+> Para evitarlo podemos editar el /etc/hosts y ejecutar:
+
+```
+mount -t cifs -o "user=pere" //samba/pere /mnt
+```
+
 
 
 
