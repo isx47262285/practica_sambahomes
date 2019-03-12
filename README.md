@@ -28,7 +28,7 @@ arrancamos la imagenes pertinentes
 
 ```
 docker run --rm --name ldap -h ldap --network sambanet -d robert72004/ldapserver_18roberto
-docker run --rm --name host -h host --privileged --network sambanet -it robert72004/hostpam:18sambahomes
+docker run --rm --name host -h host --privileged --network sambanet -it robert72004/hostpam:18homesamba
 docker run --rm --name samba -h samba --network sambanet -it robert72004/samba:18homes
 ```
 
